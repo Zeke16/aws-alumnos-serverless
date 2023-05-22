@@ -1,0 +1,32 @@
+{
+  "name": "aws-alumnos-serverless",
+  "version": "1.0.0",
+  "description": "version serverless framework de asignacion #1 -> API de alumnos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^9.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "serverless-bundle": "^6.0.0",
+    "webpack": "^5.83.1"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.335.0",
+    "@aws-sdk/client-s3": "^3.335.0",
+    "@aws-sdk/lib-dynamodb": "^3.335.0",
+    "@middy/core": "^4.4.2",
+    "@middy/http-error-handler": "^4.4.2",
+    "@middy/http-event-normalizer": "^4.4.2",
+    "@middy/http-json-body-parser": "^4.4.2",
+    "http-errors": "^2.0.0",
+    "uuid": "^9.0.0"
+  }
+}

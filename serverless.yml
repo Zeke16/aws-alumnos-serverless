@@ -1,0 +1,57 @@
+service: alumnos-serverless
+frameworkVersion: '2 || 3'
+
+plugins:
+  - serverless-bundle
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  memorySize: 128
+  region: us-west-2
+  stage: ${opt:stage, 'dev'}
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - dynamodb:PutItem
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:DeleteItem
+      Resource:
+        - "arn:aws:dynamodb:us-west-2:580085829035:table/alumnos" 
+
+functions:
+  crearAlumnoServerless:
+    handler: src/handlers/crearAlumno.handler
+    events:
+      - httpApi:
+          path: /alumnosServerless
+          method: POST
+  listarAlumnosServerless:
+    handler: src/handlers/listarAlumnos.handler
+    events:
+      - httpApi:
+          path: /alumnosServerless
+          method: GET
+  obtenerAlumnoServerless:
+    handler: src/handlers/obtenerAlumno.handler
+    events: 
+      - httpApi:
+          path: /alumnosServerless/{id}
+          method: GET
+  eliminarAlumnoServerless:
+    handler: src/handlers/eliminarAlumno.handler
+    events: 
+      - httpApi:
+          path: /alumnosServerless/{id}
+          method: POST
+  actualizarAlumnoServerless:
+    handler: src/handlers/actualizarAlumno.handler
+    events: 
+      - httpApi:
+          path: /alumnosServerless/{id}
+          method: PUT
+
+custom:
+  bundle:
+    linting: false
